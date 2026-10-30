@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation — De L’Ombre à La Lumière</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/><path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/><circle cx="32" cy="36" r="4" fill="#071923"/></svg>
+        <span>De L’Ombre à La Lumière</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container" style="max-width:600px; text-align:center;">
+      <div id="confirmation-content">
+        <!-- Rempli par JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2026 De L’Ombre à La Lumière</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const orderData = sessionStorage.getItem('last_order');
+      const container = document.getElementById('confirmation-content');
+
+      if (!orderData) {
+        container.innerHTML = `
+          <h1>Aucune commande trouvée</h1>
+          <p>Il semble que vous êtes arrivé ici par erreur.</p>
+          <a href="boutique.html" class="btn btn-primary mt-2">Retour à la boutique</a>
+        `;
+        return;
+      }
+
+      const order = JSON.parse(orderData);
+
+      container.innerHTML = `
+        <div style="font-size:4rem; margin-bottom:1rem;">✅</div>
+        <h1 style="color:var(--bleu-nuit);">Commande enregistrée</h1>
+        <p class="mt-1" style="font-size:1.1rem;">Merci ${order.name} !</p>
+        
+        <div class="alert alert-info" style="text-align:left; margin:2rem 0;">
+          <strong>Commande bien enregistrée</strong><br>
+          Numéro de commande : <strong>${order.orderId}</strong><br><br>
+          Nous vous contacterons très bientôt pour finaliser le paiement et vous envoyer votre guide PDF.
+        </div>
+
+        <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:var(--ombre); text-align:left; margin-bottom:2rem;">
+          <h3 style="margin-bottom:1rem;">Récapitulatif</h3>
+          <p><strong>Total :</strong> ${formatPrice(order.total)}</p>
+          <p><strong>Téléphone :</strong> ${order.phone}</p>
+          ${order.email ? `<p><strong>Email :</strong> ${order.email}</p>` : ''}
+          <p><strong>Paiement choisi :</strong> ${order.payment.toUpperCase()}</p>
+          <hr style="margin:1rem 0; border:none; border-top:1px solid #eee;">
+          <ul style="padding-left:1.2rem;">
+            ${order.items.map(i => `<li>${i.title}</li>`).join('')}
+          </ul>
+        </div>
+
+        <p style="color:var(--gris-clair); margin-bottom:1.5rem;">
+          Une fois le paiement Mobile Money activé, vous recevrez automatiquement 
+          un lien de téléchargement sécurisé vers votre guide PDF.
+        </p>
+
+        <a href="boutique.html" class="btn btn-primary">Retour à la boutique</a>
+        <a href="index.html" class="btn btn-outline mt-1">Accueil</a>
+      `;
+    });
+  </script>
+</body>
+</html>

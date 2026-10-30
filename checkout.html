@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commande — De L’Ombre à La Lumière</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/><path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/><circle cx="32" cy="36" r="4" fill="#071923"/></svg>
+        <span>De L’Ombre à La Lumière</span>
+      </a>
+      <div class="header-actions">
+        <a href="panier.html" class="cart-btn">🛒 <span class="cart-count" style="display:none">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container" style="max-width:700px;">
+      <h1 class="section-title">Finaliser la commande</h1>
+
+      <div class="alert alert-info">
+        <strong>Information</strong><br>
+        Le paiement sécurisé par Mobile Money (MTN, Moov, Celtiis) sera activé très bientôt. 
+        Vous pouvez déjà finaliser votre commande : nous vous contacterons pour la suite.
+      </div>
+
+      <div id="checkout-form-container">
+        <!-- Formulaire -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2026 De L’Ombre à La Lumière</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = getCart();
+      const container = document.getElementById('checkout-form-container');
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <h2>Panier vide</h2>
+            <a href="boutique.html" class="btn btn-primary mt-2">Retour à la boutique</a>
+          </div>`;
+        return;
+      }
+
+      const total = getCartTotal();
+      const itemsList = cart.map(i => `<li>${i.title} — ${formatPrice(i.price)}</li>`).join('');
+
+      container.innerHTML = `
+        <div style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:var(--ombre); margin-bottom:1.5rem;">
+          <h3 style="margin-bottom:1rem;">Votre commande</h3>
+          <ul style="margin-bottom:1rem; padding-left:1.2rem;">${itemsList}</ul>
+          <div class="flex justify-between" style="font-size:1.2rem; font-weight:700;">
+            <span>Total</span>
+            <span style="color:var(--or)">${formatPrice(total)}</span>
+          </div>
+        </div>
+
+        <form id="order-form" style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:var(--ombre);">
+          <h3 style="margin-bottom:1.25rem;">Vos informations</h3>
+          
+          <div class="form-group">
+            <label for="name">Nom complet *</label>
+            <input type="text" id="name" name="name" required placeholder="Votre nom">
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Numéro WhatsApp / Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Ex: 97 00 00 00">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email (pour recevoir le lien de téléchargement)</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com">
+          </div>
+
+          <div class="form-group">
+            <label>Mode de paiement</label>
+            <select id="payment" name="payment">
+              <option value="mtn">MTN Mobile Money</option>
+              <option value="moov">Moov Money</option>
+              <option value="celtiis">Celtiis Cash</option>
+              <option value="card">Carte Visa / Mastercard</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full">Simuler le paiement et confirmer</button>
+          
+          <p style="font-size:0.8rem; color:var(--gris-clair); margin-top:1rem; text-align:center;">
+            En mode réel, vous serez redirigé vers la page sécurisée de FedaPay.
+          </p>
+        </form>
+      `;
+
+      document.getElementById('order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const payment = document.getElementById('payment').value;
+
+        if (!name || !phone) {
+          alert('Veuillez remplir les champs obligatoires.');
+          return;
+        }
+
+        // Générer un ID de commande de démo
+        const orderId = 'DOL-' + Date.now().toString(36).toUpperCase();
+
+        // Sauvegarder temporairement pour la page de confirmation
+        sessionStorage.setItem('last_order', JSON.stringify({
+          orderId,
+          name,
+          phone,
+          email,
+          payment,
+          items: cart,
+          total,
+          date: new Date().toISOString()
+        }));
+
+        // Vider le panier
+        clearCart();
+
+        // Rediriger
+        window.location.href = 'confirmation.html?order=' + orderId;
+      });
+    });
+  </script>
+</body>
+</html>
