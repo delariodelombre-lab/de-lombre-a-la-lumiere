@@ -1,10 +1,11 @@
 // Scripts communs - De L’Ombre à La Lumière
 
 document.addEventListener('DOMContentLoaded', function () {
+
   // Menu mobile
   const toggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
-  
+
   if (toggle && mobileNav) {
     toggle.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
@@ -14,28 +15,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Active nav link
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
   document.querySelectorAll('.nav a, .mobile-nav a').forEach(link => {
     const href = link.getAttribute('href');
+
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
 
-  // Boutons "Ajouter au panier"
-  document.querySelectorAll('[data-add-to-cart]').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      const id = this.getAttribute('data-add-to-cart');
-      if (addToCart(id)) {
-        this.textContent = '✓ Ajouté';
-        this.disabled = true;
-        setTimeout(() => {
-          this.textContent = 'Ajouter au panier';
-          this.disabled = false;
-        }, 2000);
-      }
-    });
+  // Gestion des boutons Ajouter au panier
+  // La délégation permet de détecter aussi les boutons créés dynamiquement.
+  document.addEventListener('click', function (e) {
+
+    const btn = e.target.closest('[data-add-to-cart]');
+
+    if (!btn) return;
+
+    e.preventDefault();
+
+    const id = btn.getAttribute('data-add-to-cart');
+    const originalText = btn.textContent;
+
+    if (typeof addToCart !== 'function') {
+      alert('Le panier ne fonctionne pas correctement. Réessaie plus tard.');
+      return;
+    }
+
+    if (addToCart(id)) {
+      btn.textContent = '✓ Ajouté';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 2000);
+    }
   });
+
 });
 
 // Logo SVG réutilisable
