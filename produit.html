@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez nos guides numériques De L’Ombre à La Lumière.">
+  <title>Détail du guide | De L’Ombre à La Lumière</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5ef;
+      color: #172b35;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #071923;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #e9b949;
+      margin: 0;
+      font-size: 23px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 35px auto;
+      padding: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      padding: 30px 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .cover {
+      background: #071923;
+      border-radius: 12px;
+      padding: 35px;
+      font-size: 75px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #a87916;
+      font-size: 26px;
+    }
+
+    .description {
+      text-align: left;
+      white-space: pre-line;
+      margin: 20px 0;
+    }
+
+    .price {
+      font-size: 25px;
+      font-weight: bold;
+      color: #a87916;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin: 6px;
+    }
+
+    .primary {
+      background: #d5a536;
+      color: #071923;
+      font-weight: bold;
+    }
+
+    .secondary {
+      background: #071923;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>De L’Ombre à La Lumière</h1>
+    <p>Spiritualité • Bien-être • Transformation personnelle</p>
+  </header>
+
+  <main class="container">
+    <div id="product-detail" class="product">
+      Chargement du guide...
+    </div>
+  </main>
+
+  <footer>
+    © De L’Ombre à La Lumière — Tous droits réservés.
+  </footer>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const container = document.getElementById('product-detail');
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      const product = getProductById(id);
+
+      if (!product || !product.active) {
+        container.innerHTML = `
+          <h2>Guide introuvable</h2>
+          <p>Ce guide n'est pas disponible actuellement.</p>
+          <a href="boutique.html" class="btn secondary">
+            Retour à la boutique
+          </a>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="cover">${product.coverEmoji || '📖'}</div>
+
+        <h2>${product.title}</h2>
+
+        <div class="description">
+          ${product.description || 'Découvrez ce guide numérique.'}
+        </div>
+
+        <div class="price">
+          ${formatPrice(product.price)}
+        </div>
+
+        <button
+          class="btn primary"
+          data-add-to-cart="${product.id}">
+          Ajouter au panier
+        </button>
+
+        <br>
+
+        <a href="boutique.html" class="btn secondary">
+          Retour à la boutique
+        </a>
+      `;
+
+    });
+  </script>
+
+</body>
+</html>
