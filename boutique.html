@@ -81,7 +81,7 @@
       <p>© 2026 De L’Ombre à La Lumière</p>
     </div>
   </footer>
-  <script src="assets/js/produits.js"></script>
+      <script src="assets/js/products.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/cart.js"></script>
   <script>
@@ -91,14 +91,13 @@
       const emptyMsg = document.getElementById('empty-message');
       let currentFilter = 'all';
 
-      // Créer les boutons de filtre
-      filtersEl.innerHTML = CATEGORIES.map(cat => 
+      filtersEl.innerHTML = CATEGORIES.map(cat =>
         `<button class="btn ${cat.id === 'all' ? 'btn-primary' : 'btn-outline'} btn-sm" data-filter="${cat.id}">${cat.label}</button>`
       ).join('');
 
       function renderProducts(filter) {
-        const filtered = filter === 'all' 
-          ? PRODUCTS.filter(p => p.active) 
+        const filtered = filter === 'all'
+          ? PRODUCTS.filter(p => p.active)
           : PRODUCTS.filter(p => p.active && p.category === filter);
 
         if (filtered.length === 0) {
@@ -106,6 +105,7 @@
           emptyMsg.classList.remove('hidden');
           return;
         }
+
         emptyMsg.classList.add('hidden');
 
         list.innerHTML = filtered.map(p => `
@@ -126,7 +126,6 @@
         `).join('');
       }
 
-      // Gestion des clics filtres
       filtersEl.addEventListener('click', function(e) {
         if (e.target.dataset.filter) {
           currentFilter = e.target.dataset.filter;
