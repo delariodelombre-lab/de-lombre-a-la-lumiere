@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,72 +10,98 @@
   <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/><path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/><circle cx="32" cy="36" r="4" fill="#071923"/></svg>
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/>
+          <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
+          <circle cx="32" cy="36" r="4" fill="#071923"/>
+        </svg>
         <span>De L’Ombre à La Lumière</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="boutique.html">Boutique</a>
-        <a href="a-propos.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a href="panier.html" class="cart-btn">🛒 <span class="cart-count" style="display:none">0</span></a>
-        <button class="menu-toggle">☰</button>
-      </div>
-    </div>
-    <nav class="mobile-nav">
-      <a href="index.html">Accueil</a>
-      <a href="boutique.html">Boutique</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
-      <a href="panier.html">Panier</a>
-    </nav>
-  </header>
+      </a>  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <section class="section">
+  <div class="header-actions">
+    <a href="panier.html" class="cart-btn">
+      🛒 <span class="cart-count" style="display:none">0</span>
+    </a>
+    <button class="menu-toggle">☰</button>
+  </div>
+</div>
+
+<nav class="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="boutique.html">Boutique</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Contact</a>
+  <a href="panier.html">Panier</a>
+</nav>
+
+  </header>  <section class="section">
     <div class="container">
       <h1 class="section-title">Votre panier</h1>
-
       <div class="cart-layout" id="cart-content">
-        <!-- Rempli par JS -->
+        <!-- Contenu généré par JavaScript -->
       </div>
     </div>
-  </section>
-
-  <footer class="footer">
+  </section>  <footer class="footer">
     <div class="footer-bottom">
       <p>© 2026 De L’Ombre à La Lumière</p>
     </div>
-  </footer>
+  </footer>  <script src="assets/js/products.js"></script>  <script src="assets/js/cart.js"></script>  <script src="assets/js/main.js"></script>  <script>
+    function escapeHTML(value) {
+      return String(value ?? '').replace(/[&<>"']/g, function(character) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[character];
+      });
+    }
 
-  <script src="assets/js/products.js"></script>
-  <script src="assets/js/cart.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
     function renderCart() {
       const cart = getCart();
       const container = document.getElementById('cart-content');
 
-      if (cart.length === 0) {
+      if (!cart || cart.length === 0) {
         container.innerHTML = `
           <div class="empty-state" style="grid-column:1/-1">
             <p style="font-size:3rem; margin-bottom:1rem;">🛒</p>
             <h2>Votre panier est vide</h2>
             <p>Découvrez nos guides et commencez votre transformation.</p>
-            <a href="boutique.html" class="btn btn-primary mt-2">Voir la boutique</a>
+            <a href="boutique.html" class="btn btn-primary mt-2">
+              Voir la boutique
+            </a>
           </div>`;
         return;
       }
 
       const itemsHtml = cart.map(item => `
         <div class="cart-item">
-          <div class="cart-item-cover">${item.emoji}</div>
-          <div style="flex:1">
-            <h3 style="font-size:1.05rem; margin-bottom:0.3rem;">${item.title}</h3>
-            <p style="color:var(--or); font-weight:600;">${formatPrice(item.price)}</p>
+          <div class="cart-item-cover">
+            ${escapeHTML(item.emoji || '📘')}
           </div>
-          <button onclick="removeFromCart('${item.id}'); renderCart();" style="background:none; border:none; color:#c00; cursor:pointer; font-size:1.2rem;" aria-label="Supprimer">✕</button>
+
+          <div style="flex:1">
+            <h3 style="font-size:1.05rem; margin-bottom:0.3rem;">
+              ${escapeHTML(item.title)}
+            </h3>
+            <p style="color:var(--or); font-weight:600;">
+              ${formatPrice(item.price)}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onclick="removeCartItem('${escapeHTML(item.id)}')"
+            style="background:none; border:none; color:#c00; cursor:pointer; font-size:1.2rem;"
+            aria-label="Supprimer ${escapeHTML(item.title)} du panier">
+            ✕
+          </button>
         </div>
       `).join('');
 
@@ -86,31 +111,51 @@
         <div>
           ${itemsHtml}
         </div>
+
         <div class="cart-summary">
           <h3 style="margin-bottom:1rem;">Récapitulatif</h3>
+
           <div class="flex justify-between mb-2">
             <span>Sous-total</span>
             <strong>${formatPrice(total)}</strong>
           </div>
-          <div class="flex justify-between mb-2" style="font-size:0.9rem; color:var(--gris-clair);">
+
+          <div class="flex justify-between mb-2"
+            style="font-size:0.9rem; color:var(--gris-clair);">
             <span>Livraison</span>
-            <span>Numérique — immédiate</span>
+            <span>Guide numérique par e-mail après paiement confirmé</span>
           </div>
+
           <hr style="margin:1rem 0; border:none; border-top:1px solid #eee;">
+
           <div class="flex justify-between" style="font-size:1.2rem;">
             <strong>Total</strong>
             <strong style="color:var(--or)">${formatPrice(total)}</strong>
           </div>
-          <a href="checkout.html" class="btn btn-primary w-full mt-3">Passer la commande</a>
-          <a href="boutique.html" class="btn btn-outline w-full mt-1">Continuer mes achats</a>
-          <p class="mt-2" style="font-size:0.8rem; color:var(--gris-clair); text-align:center;">
-            Le paiement sécurisé Mobile Money sera bientôt disponible.
-          </p>
+
+          <a href="checkout.html" class="btn btn-primary w-full mt-3">
+            Passer la commande
+          </a>
+
+          <a href="boutique.html" class="btn btn-outline w-full mt-1">
+            Continuer mes achats
+          </a>
+
+          <div class="alert alert-info mt-2" style="font-size:0.85rem;">
+            <strong>Paiement manuel</strong><br>
+            Après votre demande de commande, nous vous communiquerons
+            les instructions pour payer par MTN Mobile Money ou Moov Money.
+            Votre guide sera envoyé par e-mail après vérification du paiement.
+          </div>
         </div>
       `;
     }
 
+    function removeCartItem(itemId) {
+      removeFromCart(itemId);
+      renderCart();
+    }
+
     document.addEventListener('DOMContentLoaded', renderCart);
-  </script>
-</body>
+  </script></body>
 </html>
