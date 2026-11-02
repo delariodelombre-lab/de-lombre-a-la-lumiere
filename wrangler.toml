@@ -1,0 +1,8 @@
+name = "fedapay-backend"
+main = "worker.js"
+compatibility_date = "2026-11-02"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "delombre-commandes"
+database_id = "eef7ae56-95d7-4ba8-b45f-12efdd93bc6c"
