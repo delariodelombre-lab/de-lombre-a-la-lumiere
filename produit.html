@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Découvrez nos guides numériques De L’Ombre à La Lumière.">
+
+  <meta name="description" content="Découvrez les guides numériques De L’Ombre à La Lumière : connaissance de soi, préparation mentale et spiritualité.">
+
   <title>Détail du guide | De L’Ombre à La Lumière</title>
 
   <style>
@@ -16,76 +18,155 @@
       font-family: Arial, sans-serif;
       background: #f7f5ef;
       color: #172b35;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     header {
       background: #071923;
       color: white;
-      padding: 22px 16px;
+      padding: 24px 16px;
       text-align: center;
     }
 
     header h1 {
       color: #e9b949;
       margin: 0;
-      font-size: 23px;
+      font-size: 25px;
+      letter-spacing: 0.5px;
     }
 
     header p {
-      margin: 5px 0 0;
+      margin: 6px 0 0;
       font-size: 14px;
+      color: #e8e8e8;
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: 35px auto;
-      padding: 20px;
+      padding: 15px;
     }
 
     .product {
       background: white;
-      border-radius: 15px;
-      padding: 30px 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      text-align: center;
+      border-radius: 16px;
+      padding: 30px 24px;
+      box-shadow: 0 5px 22px rgba(0,0,0,0.08);
     }
 
     .cover {
-      background: #071923;
-      border-radius: 12px;
-      padding: 35px;
+      background: linear-gradient(145deg, #071923, #173747);
+      border: 1px solid #d5a536;
+      border-radius: 14px;
+      padding: 38px 15px;
+      text-align: center;
       font-size: 75px;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
+    }
+
+    .guide-label {
+      display: inline-block;
+      background: #f8efd9;
+      color: #8b6514;
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 12px;
     }
 
     h2 {
       color: #a87916;
-      font-size: 26px;
+      font-size: 27px;
+      line-height: 1.35;
+      margin: 10px 0 18px;
+      text-align: center;
     }
 
     .description {
       text-align: left;
-      white-space: pre-line;
       margin: 20px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .description h3 {
+      color: #9a701c;
+      font-size: 19px;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ead9b2;
+      padding-bottom: 7px;
+    }
+
+    .description p {
+      margin: 10px 0;
+    }
+
+    .description ul {
+      padding-left: 23px;
+    }
+
+    .description li {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: #fbf5e8;
+      border-left: 4px solid #d5a536;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    .price-box {
+      background: #f8f5ed;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 28px;
     }
 
     .price {
-      font-size: 25px;
+      font-size: 29px;
       font-weight: bold;
       color: #a87916;
-      margin: 20px 0;
+      margin: 5px 0;
+    }
+
+    .format {
+      color: #5d6870;
+      font-size: 14px;
+    }
+
+    .payment-note {
+      background: #fff8e9;
+      border: 1px solid #ead9b2;
+      border-radius: 9px;
+      padding: 13px;
+      margin-top: 16px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 22px;
     }
 
     .btn {
       display: inline-block;
       padding: 13px 22px;
-      border-radius: 7px;
+      border-radius: 8px;
       text-decoration: none;
       border: none;
       cursor: pointer;
       font-size: 15px;
       margin: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.88;
     }
 
     .primary {
@@ -100,10 +181,37 @@
     }
 
     footer {
+      background: #071923;
       text-align: center;
-      padding: 25px;
-      color: #666;
+      padding: 25px 15px;
+      color: #e5e5e5;
       font-size: 13px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 18px auto;
+        padding: 12px;
+      }
+
+      .product {
+        padding: 22px 16px;
+      }
+
+      h2 {
+        font-size: 23px;
+      }
+
+      .cover {
+        font-size: 62px;
+        padding: 28px 12px;
+      }
+
+      .btn {
+        width: 100%;
+        margin: 7px 0;
+      }
     }
   </style>
 </head>
@@ -142,37 +250,123 @@
         container.innerHTML = `
           <h2>Guide introuvable</h2>
           <p>Ce guide n'est pas disponible actuellement.</p>
-          <a href="boutique.html" class="btn secondary">
-            Retour à la boutique
-          </a>
+          <div class="actions">
+            <a href="boutique.html" class="btn secondary">
+              Retour à la boutique
+            </a>
+          </div>
         `;
         return;
       }
 
+      const isGuideOne = product.id === 'guide-transformation';
+
+      const description = isGuideOne
+        ? `
+          <p><strong>Le premier pas pour mieux comprendre sa vie et retrouver sa direction.</strong></p>
+
+          <p>Avez-vous parfois l'impression de répéter les mêmes erreurs, de rencontrer les mêmes difficultés ou de fournir des efforts sans savoir clairement ce qui vous empêche d'avancer ?</p>
+
+          <p>Avant de chercher à transformer sa vie, il est important d'apprendre à mieux la comprendre.</p>
+
+          <p>Le guide <strong>« La prise de conscience »</strong> vous invite à prendre du recul, à observer votre monde intérieur et à examiner les habitudes, les pensées, les peurs et les croyances qui peuvent influencer vos décisions.</p>
+
+          <p>Ce premier volume de la collection De L’Ombre à La Lumière constitue une base de réflexion pour commencer un travail personnel progressif, lucide et responsable.</p>
+
+          <h3>Ce que vous allez explorer</h3>
+          <ul>
+            <li>Comprendre vos pensées et vos émotions.</li>
+            <li>Identifier certaines habitudes qui freinent votre progression.</li>
+            <li>Distinguer les faits de vos interprétations.</li>
+            <li>Examiner vos peurs et les croyances qui influencent vos choix.</li>
+            <li>Apprendre à prendre vos responsabilités sans vous condamner.</li>
+            <li>Clarifier vos valeurs et vos priorités.</li>
+            <li>Découvrir une approche spirituelle fondée sur le discernement.</li>
+            <li>Transformer progressivement vos prises de conscience en actions concrètes.</li>
+          </ul>
+
+          <h3>Un parcours structuré en 4 parties</h3>
+
+          <p><strong>Partie 1 — Le réveil psychologique</strong><br>
+          Apprenez à regarder votre situation avec honnêteté et à examiner les pensées qui orientent vos décisions.</p>
+
+          <p><strong>Partie 2 — La rencontre avec soi-même</strong><br>
+          Explorez vos peurs, vos contradictions, votre passé et les valeurs qui donnent une direction à votre vie.</p>
+
+          <p><strong>Partie 3 — L'ouverture spirituelle</strong><br>
+          Approfondissez votre réflexion sur le silence, la conscience, les racines et le sens de votre vie intérieure.</p>
+
+          <p><strong>Partie 4 — La discipline de transformation</strong><br>
+          Découvrez comment passer de la réflexion à l'action et construire des habitudes plus cohérentes avec vos objectifs.</p>
+
+          <h3>Des exercices pour passer à la pratique</h3>
+
+          <p>Ce guide ne se limite pas à des explications. Il vous propose des exercices de réflexion écrite et un programme progressif de 14 jours pour observer votre évolution.</p>
+
+          <p>Vous disposerez notamment :</p>
+          <ul>
+            <li>D'exercices pour mieux vous connaître.</li>
+            <li>De questions pour examiner vos pensées et vos peurs.</li>
+            <li>D'un carnet de transformation.</li>
+            <li>D'un bilan personnel pour faire le point sur votre parcours.</li>
+          </ul>
+
+          <h3>À qui s'adresse ce guide ?</h3>
+
+          <p>À toute personne qui souhaite mieux se comprendre, prendre du recul sur sa situation, examiner ses habitudes et commencer une démarche personnelle de changement.</p>
+
+          <p>Aucune connaissance particulière en psychologie ou en spiritualité n'est nécessaire.</p>
+
+          <div class="highlight">
+            <strong>Votre chemin commence par la conscience.</strong>
+            <p>Vous n'avez pas besoin de tout changer en un jour. Vous pouvez commencer par observer, comprendre et choisir un premier pas réaliste.</p>
+            <p>La prise de conscience ne transforme pas tout instantanément. Elle vous donne une meilleure compréhension de votre point de départ et vous aide à choisir la suite de votre chemin.</p>
+          </div>
+
+          <p><em>De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, cultiver sa conscience et transformer progressivement sa vie intérieure.</em></p>
+        `
+        : `
+          <p>${product.description || 'Découvrez ce guide numérique.'}</p>
+          <div class="highlight">
+            ${product.longDescription || ''}
+          </div>
+        `;
+
       container.innerHTML = `
         <div class="cover">${product.coverEmoji || '📖'}</div>
+
+        <div style="text-align:center;">
+          <span class="guide-label">
+            ${isGuideOne ? 'GUIDE 1 — CONNAISSANCE DE SOI' : 'GUIDE 2 — PRÉPARATION INTÉRIEURE'}
+          </span>
+        </div>
 
         <h2>${product.title}</h2>
 
         <div class="description">
-          ${product.description || 'Découvrez ce guide numérique.'}
+          ${description}
         </div>
 
-        <div class="price">
-          ${formatPrice(product.price)}
+        <div class="price-box">
+          <div class="format">Livre numérique au format PDF</div>
+          <div class="price">${formatPrice(product.price)}</div>
+
+          <div class="payment-note">
+            Après votre demande de commande, les instructions de paiement vous seront communiquées par e-mail. Le guide sera envoyé à votre adresse e-mail après vérification effective du paiement.
+          </div>
         </div>
 
-        <button
-          class="btn primary"
-          data-add-to-cart="${product.id}">
-          Ajouter au panier
-        </button>
+        <div class="actions">
+          <button
+            class="btn primary"
+            data-add-to-cart="${product.id}">
+            Ajouter au panier
+          </button>
 
-        <br>
-
-        <a href="boutique.html" class="btn secondary">
-          Retour à la boutique
-        </a>
+          <a href="boutique.html" class="btn secondary">
+            Retour à la boutique
+          </a>
+        </div>
       `;
 
     });
