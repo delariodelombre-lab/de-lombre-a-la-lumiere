@@ -1,84 +1,649 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos — De L’Ombre à La Lumière</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
-</head>
-<body>
-  <header class="header">
+  <meta name="description" content="Découvrez De L’Ombre à La Lumière : notre mission, notre philosophie et notre engagement pour accompagner votre évolution personnelle, mentale et spirituelle.">
+  <meta name="theme-color" content="#071923">  <title>À propos de nous — De L’Ombre à La Lumière</title>  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">  <style>
+    .about-page {
+      background: #f7f8f7;
+      padding-bottom: 4rem;
+    }
+
+    .about-hero {
+      background: linear-gradient(135deg, #071923 0%, #102f3b 65%, #1b4650 100%);
+      color: #fff;
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    .about-hero .eyebrow {
+      color: #E9B949;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-hero h1 {
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.2;
+      max-width: 850px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .about-hero p {
+      color: #e1e9e9;
+      font-size: 1.12rem;
+      line-height: 1.9;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+
+    .about-section {
+      background: #fff;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border-radius: 15px;
+      margin-top: 2rem;
+      box-shadow: 0 5px 25px rgba(7, 25, 35, .06);
+    }
+
+    .about-section h2 {
+      color: #102f3b;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      margin-bottom: 1.3rem;
+      line-height: 1.35;
+    }
+
+    .about-section h3 {
+      color: #173d49;
+      font-size: 1.12rem;
+      margin: 1.6rem 0 .6rem;
+    }
+
+    .about-section p {
+      color: #45545a;
+      font-size: 1rem;
+      line-height: 1.95;
+      margin-bottom: 1rem;
+    }
+
+    .about-section strong {
+      color: #173d49;
+    }
+
+    .about-highlight {
+      border-left: 4px solid #E9B949;
+      background: #fff9e9;
+      padding: 1.4rem 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.5rem 0;
+    }
+
+    .about-highlight p {
+      color: #35464b;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .about-list {
+      padding-left: 1.4rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .about-list li {
+      color: #45545a;
+      line-height: 1.85;
+      margin-bottom: .65rem;
+      padding-left: .3rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .value-card {
+      background: #f5f8f7;
+      border: 1px solid #e7edeb;
+      border-radius: 12px;
+      padding: 1.3rem;
+    }
+
+    .value-card h3 {
+      color: #173d49;
+      margin: 0 0 .6rem;
+      font-size: 1.1rem;
+    }
+
+    .value-card p {
+      font-size: .95rem;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .about-steps {
+      counter-reset: about-step;
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .about-steps li {
+      counter-increment: about-step;
+      position: relative;
+      padding: 0 0 1.5rem 3.5rem;
+      color: #45545a;
+      line-height: 1.85;
+    }
+
+    .about-steps li::before {
+      content: counter(about-step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: #102f3b;
+      color: #E9B949;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .about-final {
+      background: linear-gradient(135deg, #071923, #173d49);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .about-final h2 {
+      color: #fff;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .about-final p {
+      color: #e1e9e9;
+      max-width: 760px;
+      margin: 0 auto 1.3rem;
+      line-height: 1.9;
+    }
+
+    .about-final .signature {
+      color: #E9B949;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+    }
+
+    .about-cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .about-hero {
+        padding: 3.5rem 1.2rem;
+      }
+
+      .about-section {
+        padding: 1.4rem;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style></head><body>  <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/><path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/><circle cx="32" cy="36" r="4" fill="#071923"/></svg>
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/>
+          <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
+          <circle cx="32" cy="36" r="4" fill="#071923"/>
+        </svg>
         <span>De L’Ombre à La Lumière</span>
-      </a>
-      <nav class="nav">
-        <a href="index.html">Accueil</a>
-        <a href="boutique.html">Boutique</a>
-        <a href="a-propos.html" class="active">À propos</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a href="panier.html" class="cart-btn">🛒 <span class="cart-count" style="display:none">0</span></a>
-        <button class="menu-toggle">☰</button>
-      </div>
+      </a>  <nav class="nav">
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <a href="a-propos.html" class="active">À propos</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="panier.html" class="cart-btn">
+      🛒 <span class="cart-count" style="display:none">0</span>
+    </a>
+    <button class="menu-toggle">☰</button>
+  </div>
+</div>
+
+<nav class="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="boutique.html">Boutique</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="panier.html">Panier</a>
+</nav>
+
+  </header>  <main class="about-page"><!-- PRÉSENTATION GÉNÉRALE -->
+
+<section class="about-hero">
+  <div class="about-hero-content">
+    <p class="eyebrow">Notre identité · Notre vision · Notre engagement</p>
+
+    <h1>Bienvenue dans l’univers De L’Ombre à La Lumière</h1>
+
+    <p>
+      Un espace de réflexion, de connaissance de soi et d'évolution intérieure,
+      destiné à celles et ceux qui souhaitent mieux comprendre leur vie,
+      développer leur conscience et avancer avec davantage de clarté.
+    </p>
+  </div>
+</section>
+
+<div class="about-container">
+
+  <!-- NOTRE IDENTITÉ -->
+
+  <section class="about-section">
+    <h2>1. Qui sommes-nous ?</h2>
+
+    <p>
+      <strong>De L’Ombre à La Lumière</strong> est un projet consacré au
+      développement personnel, à la préparation mentale et à la réflexion
+      spirituelle. Notre démarche repose sur une idée essentielle :
+      l'évolution d'une personne commence souvent par une meilleure
+      compréhension d'elle-même.
+    </p>
+
+    <p>
+      Dans la vie, il arrive que nous avancions sans réellement comprendre
+      ce qui influence nos décisions. Nous répétons certaines habitudes,
+      entretenons des pensées qui nous découragent, poursuivons des objectifs
+      qui ne nous correspondent plus ou restons attachés à des situations
+      qui nous empêchent de progresser.
+    </p>
+
+    <p>
+      Nous pouvons alors avoir l'impression de tourner en rond, de fournir
+      beaucoup d'efforts sans obtenir les changements espérés, ou de perdre
+      progressivement le lien avec nos aspirations profondes.
+    </p>
+
+    <p>
+      C'est à partir de cette réalité humaine que notre projet prend tout
+      son sens. Nous souhaitons proposer un espace dans lequel chacun peut
+      prendre du recul, réfléchir à son parcours, questionner ses habitudes
+      et découvrir des pistes concrètes pour construire une évolution
+      plus consciente.
+    </p>
+
+    <div class="about-highlight">
+      <p>
+        « Se libérer, se recentrer, rayonner : un cheminement qui commence
+        par la connaissance de soi et se construit par des choix conscients. »
+      </p>
     </div>
-    <nav class="mobile-nav">
-      <a href="index.html">Accueil</a>
-      <a href="boutique.html">Boutique</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-      <a href="panier.html">Panier</a>
-    </nav>
-  </header>
 
-  <section class="section">
-    <div class="container" style="max-width:800px;">
-      <h1 class="section-title">À propos de la marque</h1>
-      
-      <div style="background:#fff; padding:2rem; border-radius:12px; box-shadow:var(--ombre);">
-        <p style="font-size:1.15rem; margin-bottom:1.5rem; color:var(--bleu-nuit);">
-          <strong>« Se libérer, se recentrer, rayonner. »</strong>
-        </p>
-        
-        <p style="margin-bottom:1rem;">
-          De L’Ombre à La Lumière est née d’une conviction simple : chaque personne porte en elle une lumière. Parfois cette lumière s’estompe sous le poids des habitudes, des peurs, des doutes ou des conditionnements.
-        </p>
-        
-        <p style="margin-bottom:1rem;">
-          Nos guides numériques sont conçus comme des compagnons pratiques. Pas de grands discours théoriques, mais des exercices concrets, des grilles de réflexion et des outils immédiatement utilisables pour :
-        </p>
-        
-        <ul style="margin:1rem 0 1.5rem 1.5rem;">
-          <li>Mieux se connaître</li>
-          <li>Dépasser les blocages intérieurs</li>
-          <li>Construire une discipline bienveillante</li>
-          <li>Cultiver le calme et la clarté</li>
-          <li>Avancer vers une vie plus consciente</li>
-        </ul>
-        
-        <p>
-          Tous les contenus sont rédigés en français, avec clarté et respect du rythme de chacun. Ils s’adressent particulièrement aux personnes francophones d’Afrique de l’Ouest et de la diaspora qui souhaitent travailler sur elles-mêmes de façon accessible et concrète.
-        </p>
-      </div>
+    <p>
+      Notre nom symbolise ce passage progressif d'un état de confusion,
+      d'ignorance de soi ou de découragement vers davantage de compréhension,
+      de lucidité, de responsabilité et de paix intérieure.
+    </p>
 
-      <div class="text-center mt-3">
-        <a href="boutique.html" class="btn btn-primary">Découvrir les guides</a>
-      </div>
+    <p>
+      La lumière dont nous parlons représente avant tout la clarté que
+      nous pouvons développer en nous-mêmes : celle qui nous aide à mieux
+      comprendre nos pensées, à reconnaître nos besoins et à agir en accord
+      avec nos valeurs.
+    </p>
+  </section>
+
+  <!-- NOTRE MISSION -->
+
+  <section class="about-section">
+    <h2>2. Notre mission : accompagner le cheminement intérieur</h2>
+
+    <p>
+      Notre mission est de rendre les réflexions liées au développement
+      personnel et à la spiritualité plus accessibles, plus structurées
+      et plus faciles à mettre en pratique.
+    </p>
+
+    <p>
+      Nous voulons accompagner les personnes qui ressentent le besoin
+      de faire le point sur leur vie, de mieux comprendre leur fonctionnement
+      intérieur et de développer des habitudes plus favorables à leur
+      équilibre.
+    </p>
+
+    <p>À travers nos contenus, nous cherchons notamment à aider chacun à :</p>
+
+    <ul class="about-list">
+      <li>Prendre conscience de ses habitudes et de ses schémas de pensée.</li>
+      <li>Reconnaître certaines croyances qui peuvent limiter ses possibilités.</li>
+      <li>Développer une meilleure connaissance de soi.</li>
+      <li>Renforcer sa discipline sans tomber dans la dureté envers soi-même.</li>
+      <li>Clarifier ses objectifs et ses priorités.</li>
+      <li>Approfondir sa réflexion sur la dimension spirituelle de son existence.</li>
+      <li>Prendre des décisions plus cohérentes avec ses valeurs.</li>
+      <li>Transformer progressivement ses prises de conscience en actions concrètes.</li>
+    </ul>
+
+    <p>
+      Nous ne prétendons pas détenir toutes les réponses aux difficultés
+      humaines. Notre objectif est plutôt de proposer des pistes de réflexion,
+      des connaissances et des exercices qui permettent à chacun de
+      poursuivre son propre cheminement.
+    </p>
+  </section>
+
+  <!-- NOTRE VISION -->
+
+  <section class="about-section">
+    <h2>3. Notre vision : une transformation qui commence de l'intérieur</h2>
+
+    <p>
+      Nous croyons qu'une évolution durable ne repose pas uniquement sur
+      le désir de changer. Elle demande également de comprendre ce que
+      nous souhaitons transformer, pourquoi nous voulons le faire et
+      quelles actions peuvent nous rapprocher de nos objectifs.
+    </p>
+
+    <p>
+      Une personne peut vouloir une nouvelle vie sans avoir encore identifié
+      les habitudes, les peurs ou les comportements qui influencent son
+      quotidien. Elle peut également chercher des solutions extérieures
+      sans prendre le temps d'examiner ses besoins et ses priorités.
+    </p>
+
+    <p>
+      C'est pourquoi notre vision accorde une place importante au travail
+      intérieur. Nous souhaitons encourager une approche qui associe
+      réflexion, apprentissage, mise en pratique et responsabilité personnelle.
+    </p>
+
+    <p>
+      Pour nous, évoluer ne signifie pas devenir une personne parfaite,
+      ne plus jamais douter ou ne plus rencontrer de difficultés. Cela
+      signifie apprendre à mieux se connaître, à reconnaître ses limites,
+      à développer ses capacités et à faire des choix plus conscients.
+    </p>
+
+    <div class="about-highlight">
+      <p>
+        La transformation n'est pas un événement magique qui change
+        toute une existence en un instant. C'est un chemin qui se construit
+        progressivement, par la conscience et par les actes.
+      </p>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>© 2026 De L’Ombre à La Lumière</p>
-    </div>
-  </footer>
+  <!-- NOTRE PHILOSOPHIE -->
 
-  <script src="assets/js/cart.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
+  <section class="about-section">
+    <h2>4. Notre philosophie : préparer l'esprit, comprendre l'être, agir avec conscience</h2>
+
+    <p>
+      Notre approche repose sur plusieurs dimensions complémentaires.
+      Nous considérons qu'il est utile de travailler sur sa manière de penser,
+      de prendre soin de son équilibre intérieur et de réfléchir à la place
+      que l'on souhaite accorder à la spiritualité dans sa vie.
+    </p>
+
+    <h3>La préparation mentale</h3>
+
+    <p>
+      Avant de construire de nouvelles habitudes, il est important de
+      comprendre ses pensées, ses réactions et ses croyances. La préparation
+      mentale permet de développer davantage de lucidité, de renforcer sa
+      capacité à réfléchir et de mieux orienter ses efforts.
+    </p>
+
+    <p>
+      Elle nous invite à ne pas laisser chaque peur décider à notre place,
+      à apprendre de nos erreurs et à construire des objectifs réalistes.
+    </p>
+
+    <h3>La connaissance de soi</h3>
+
+    <p>
+      Se connaître, c'est prendre le temps d'observer ses émotions, ses
+      besoins, ses qualités, ses limites et ses comportements. Cette
+      démarche nous permet de mieux comprendre ce qui nous motive et
+      ce qui peut nous freiner.
+    </p>
+
+    <h3>La préparation spirituelle</h3>
+
+    <p>
+      La spiritualité peut représenter pour chacun une manière de donner
+      du sens à son existence, de cultiver le recueillement et de réfléchir
+      à sa relation avec soi-même, les autres et ce qui le dépasse.
+    </p>
+
+    <p>
+      Nous abordons cette dimension avec respect, sans imposer une
+      croyance particulière. La prière, la méditation, le silence,
+      l'introspection ou d'autres pratiques peuvent accompagner le
+      cheminement selon les convictions de chacun.
+    </p>
+
+    <h3>La responsabilité personnelle</h3>
+
+    <p>
+      Les prises de conscience deviennent plus utiles lorsqu'elles
+      s'accompagnent d'actions. Nous encourageons donc chacun à identifier
+      les changements qui dépendent réellement de lui, à avancer à son
+      rythme et à rechercher de l'aide lorsque certaines difficultés
+      dépassent ses possibilités.
+    </p>
+  </section>
+
+  <!-- NOS VALEURS -->
+
+  <section class="about-section">
+    <h2>5. Les valeurs qui guident notre démarche</h2>
+
+    <p>
+      Notre projet s'appuie sur des principes qui orientent la manière
+      dont nous souhaitons concevoir nos contenus et accompagner nos lecteurs.
+    </p>
+
+    <div class="values-grid">
+
+      <div class="value-card">
+        <h3>La conscience</h3>
+        <p>
+          Encourager chacun à observer sa vie, à comprendre ses choix
+          et à prendre du recul avant d'agir.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>L'authenticité</h3>
+        <p>
+          Privilégier des réflexions sincères, des explications claires
+          et des conseils qui restent proches des réalités humaines.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>Le respect</h3>
+        <p>
+          Respecter les convictions, les expériences, les différences
+          et le rythme d'évolution de chaque personne.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>La discipline</h3>
+        <p>
+          Encourager la régularité, la persévérance et les efforts
+          progressifs sans culpabilisation excessive.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>La bienveillance</h3>
+        <p>
+          Rappeler que chacun peut apprendre de ses erreurs et avancer
+          sans se réduire à ses difficultés passées.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>La responsabilité</h3>
+        <p>
+          Favoriser des décisions réfléchies, des actions concrètes
+          et une utilisation prudente des ressources personnelles.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>La profondeur</h3>
+        <p>
+          Aller au-delà des formules toutes faites pour proposer
+          des contenus qui invitent à réfléchir réellement.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>L'accessibilité</h3>
+        <p>
+          Présenter les idées dans un langage clair afin que chacun
+          puisse comprendre les enseignements et les mettre en pratique.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOS GUIDES -->
+
+  <section class="about-section">
+    <h2>6. Nos guides : apprendre, réfléchir et mettre en pratique</h2>
+
+    <p>
+      Les guides numériques occupent une place importante dans notre projet.
+      Ils sont conçus pour permettre aux lecteurs d'approfondir un sujet
+      et de disposer d'un support qu'ils peuvent consulter à leur rythme.
+    </p>
+
+    <p>
+      Nous ne souhaitons pas proposer de simples textes remplis de phrases
+      motivantes que l'on oublie après quelques minutes. Nous cherchons
+      à construire des contenus organisés, développés et utiles, qui
+      associent explications, exemples, réflexions et exercices.
+    </p>
+
+    <p>Selon le thème abordé, nos guides peuvent notamment proposer :</p>
+
+    <ul class="about-list">
+      <li>Des explications pour mieux comprendre certaines situations personnelles.</li>
+      <li>Des exemples inspirés de difficultés que l'on peut rencontrer dans la vie quotidienne.</li>
+      <li>Des questions d'introspection pour approfondir sa réflexion.</li>
+      <li>Des exercices pratiques à réaliser individuellement.</li>
+      <li>Des méthodes pour développer progressivement de nouvelles habitudes.</li>
+      <li>Des moments de réflexion et de recueillement adaptés au thème traité.</li>
+      <li>Des bilans pour observer son évolution et identifier les prochaines étapes.</li>
+    </ul>
+
+    <p>
+      Nous accordons également de l'importance à la continuité entre
+      les différents guides. Chaque thème doit pouvoir contribuer à
+      un cheminement global, dans lequel les connaissances acquises
+      peuvent servir de base à de nouvelles découvertes.
+    </p>
+
+    <div class="about-highlight">
+      <p>
+        Notre ambition est de créer une collection cohérente : des
+        contenus qui ne se limitent pas à inspirer, mais qui invitent
+        aussi à comprendre, à expérimenter et à progresser.
+      </p>
+    </div>
+  </section>
+
+  <!-- NOTRE APPROCHE -->
+
+  <section class="about-section">
+    <h2>7. Une approche progressive, étape après étape</h2>
+
+    <p>
+      Nous pensons qu'il est préférable de construire son évolution
+      sur des bases solides plutôt que de vouloir tout changer en une
+      seule journée.
+    </p>
+
+    <p>Notre démarche peut se comprendre à travers plusieurs étapes :</p>
+
+    <ol class="about-steps">
+      <li>
+        <strong>Prendre conscience :</strong> observer sa situation,
+        identifier ses difficultés et reconnaître les habitudes qui
+        influencent son quotidien.
+      </li>
+
+      <li>
+        <strong>Se préparer mentalement :</strong> examiner ses pensées,
+        développer une meilleure compréhension de soi et clarifier
+        ses intentions.
+      </li>
+
+      <li>
+        <strong>Approfondir sa vie intérieure :</strong> réfléchir à ses
+        valeurs, à ses convictions et aux pratiques qui favorisent
+        son équilibre.
+      </li>
+
+      <li>
+        <strong>Apprendre et expérimenter :</strong> mettre en pratique
+        des exercices adaptés à sa réalité et observer les effets
+        de ses nouvelles habitudes.
+      </li>
+
+      <li>
+        <strong>Construire dans la durée :</strong> faire le bilan de
+        ses progrès, ajuster ses objectifs et continuer à avancer
+        avec patience.
+      </li>
+    </ol>
+
+    <p>
+      Ces étapes ne constituent pas une formule universelle. Chaque
+      personne possède son histoire, ses responsabilités et ses
+      propres besoins. Elles représentent simplement des repères
+      pour organiser une démarche personnelle.
+    </p>
+  </section>
+
+  <!-- NOTRE PUBLIC -->
+
+  <section class="about-section">
+    <h2>8. À qui s'adresse De L’Ombre à La Lumière ?</h2>
+
+    <p>
+      Notre univers s'adresse aux personnes qui ressentent le besoin
+      de mieux se comprendre et de donner une nouvelle direction
+      à certains asp
