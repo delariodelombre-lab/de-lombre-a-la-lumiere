@@ -92,10 +92,18 @@
     .description h3 {
       color: #9a701c;
       font-size: 19px;
-      margin-top: 28px;
-      margin-bottom: 10px;
+      margin-top: 30px;
+      margin-bottom: 12px;
       border-bottom: 1px solid #ead9b2;
-      padding-bottom: 7px;
+      padding-bottom: 8px;
+    }
+
+    .description h4 {
+      color: #173747;
+      font-size: 16px;
+      margin: 22px 0 5px;
+      padding-left: 12px;
+      border-left: 3px solid #d5a536;
     }
 
     .description p {
@@ -104,18 +112,48 @@
 
     .description ul {
       padding-left: 23px;
+      margin: 12px 0 20px;
     }
 
     .description li {
-      margin-bottom: 8px;
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+
+    .description li::marker {
+      color: #c29432;
     }
 
     .highlight {
       background: #fbf5e8;
       border-left: 4px solid #d5a536;
-      padding: 15px;
-      margin: 20px 0;
+      padding: 17px;
+      margin: 22px 0;
       border-radius: 5px;
+    }
+
+    .highlight strong {
+      color: #8b6514;
+    }
+
+    .section-intro {
+      background: #f8f5ed;
+      border-radius: 9px;
+      padding: 16px;
+      margin: 18px 0;
+      border: 1px solid #ead9b2;
+    }
+
+    .section-heading {
+      background: linear-gradient(110deg, #071923, #173747);
+      color: #e9b949;
+      padding: 13px 16px;
+      border-radius: 8px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
     }
 
     .price-box {
@@ -208,6 +246,10 @@
         padding: 28px 12px;
       }
 
+      .section-heading {
+        font-size: 15px;
+      }
+
       .btn {
         width: 100%;
         margin: 7px 0;
@@ -238,6 +280,100 @@
   <script src="assets/js/cart.js"></script>
 
   <script>
+    // Sécurise l'affichage du texte provenant du catalogue.
+    function escapeHTML(text) {
+      return String(text).replace(/[&<>"']/g, function(character) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[character];
+      });
+    }
+
+    // Transforme la description textuelle en une présentation structurée.
+    function renderFormattedDescription(text) {
+      const lines = String(text || '').split(/\r?\n/);
+      let html = '';
+      let paragraph = [];
+      let list = [];
+
+      function flushParagraph() {
+        if (paragraph.length) {
+          html += '<p>' + paragraph.map(escapeHTML).join(' ') + '</p>';
+          paragraph = [];
+        }
+      }
+
+      function flushList() {
+        if (list.length) {
+          html += '<ul>' + list.map(function(item) {
+            return '<li>' + escapeHTML(item) + '</li>';
+          }).join('') + '</ul>';
+          list = [];
+        }
+      }
+
+      function flushAll() {
+        flushParagraph();
+        flushList();
+      }
+
+      lines.forEach(function(rawLine) {
+        const line = rawLine.trim();
+
+        if (!line) {
+          flushAll();
+          return;
+        }
+
+        // Reconnaît les lignes de listes à puces.
+        if (/^[•●▪\-]\s*/.test(line)) {
+          flushParagraph();
+          list.push(line.replace(/^[•●▪\-]\s*/, ''));
+          return;
+        }
+
+        flushList();
+
+        // Le titre principal du guide.
+        if (/^GUIDE\s+\d+\s+—/i.test(line)) {
+          flushParagraph();
+          html += '<div class="section-heading">' +
+            escapeHTML(line) +
+            '</div>';
+          return;
+        }
+
+        // Reconnaît les titres de sections en majuscules.
+        const isHeading =
+          line === line.toLocaleUpperCase('fr-FR') &&
+          /[A-ZÀ-Ÿ]/.test(line) &&
+          line.length > 3;
+
+        if (isHeading) {
+          flushParagraph();
+          html += '<h3>' + escapeHTML(line) + '</h3>';
+          return;
+        }
+
+        // Reconnaît les titres des chapitres.
+        if (/^Chapitre\s+\d+\s+—/i.test(line)) {
+          flushParagraph();
+          html += '<h4>' + escapeHTML(line) + '</h4>';
+          return;
+        }
+
+        paragraph.push(line);
+      });
+
+      flushAll();
+
+      return html;
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
 
       const container = document.getElementById('product-detail');
@@ -326,14 +462,15 @@
           <p><em>De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, cultiver sa conscience et transformer progressivement sa vie intérieure.</em></p>
         `
         : `
-          <p>${product.description || 'Découvrez ce guide numérique.'}</p>
-          <div class="highlight">
-            ${product.longDescription || ''}
+          <div class="section-intro">
+            <strong>${escapeHTML(product.description || '')}</strong>
           </div>
+
+          ${renderFormattedDescription(product.longDescription)}
         `;
 
       container.innerHTML = `
-        <div class="cover">${product.coverEmoji || '📖'}</div>
+        <div class="cover">${escapeHTML(product.coverEmoji || '📖')}</div>
 
         <div style="text-align:center;">
           <span class="guide-label">
@@ -341,7 +478,7 @@
           </span>
         </div>
 
-        <h2>${product.title}</h2>
+        <h2>${escapeHTML(product.title)}</h2>
 
         <div class="description">
           ${description}
@@ -359,7 +496,7 @@
         <div class="actions">
           <button
             class="btn primary"
-            data-add-to-cart="${product.id}">
+            data-add-to-cart="${escapeHTML(product.id)}">
             Ajouter au panier
           </button>
 
