@@ -98,18 +98,7 @@ De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, 
 
     description: "Un guide pour mieux comprendre ses pensées et ses émotions, développer des habitudes utiles, renforcer sa discipline et nourrir une démarche spirituelle cohérente avec ses valeurs.",
 
-    longDescription: `Le deuxième guide accompagne la suite du parcours : préparer son esprit, clarifier ses intentions et avancer avec plus de constance.
-
-Tu y trouveras notamment :
-• L’état d’esprit et le dialogue intérieur
-• La maîtrise des pensées et la protection de l’attention
-• La discipline, les habitudes et la persévérance
-• Les peurs, les émotions et les blocages intérieurs
-• L’équilibre du corps, de l’esprit et de la dimension spirituelle
-• Des exercices et un plan personnel pour les sept prochains jours
-
-Format prévu : livre numérique PDF.
-longDescription: `GUIDE 2 — LA PRÉPARATION MENTALE ET SPIRITUELLE
+    longDescription: `GUIDE 2 — LA PRÉPARATION MENTALE ET SPIRITUELLE
 
 Préparer son esprit, renforcer sa discipline et retrouver son équilibre intérieur.
 
