@@ -109,7 +109,92 @@ Tu y trouveras notamment :
 • Des exercices et un plan personnel pour les sept prochains jours
 
 Format prévu : livre numérique PDF.
-Guide 2 de la collection De L’Ombre à La Lumière.`,
+longDescription: `GUIDE 2 — LA PRÉPARATION MENTALE ET SPIRITUELLE
+
+Préparer son esprit, renforcer sa discipline et retrouver son équilibre intérieur.
+
+Après avoir commencé à mieux comprendre votre vie grâce à la prise de conscience, une nouvelle étape s'ouvre : apprendre à préparer votre esprit, à renforcer vos habitudes et à développer une démarche spirituelle plus cohérente.
+
+Ce deuxième guide vous accompagne dans un travail personnel progressif qui associe réflexion mentale, discipline, stabilité émotionnelle et préparation spirituelle.
+
+CE QUE VOUS ALLEZ DÉCOUVRIR
+
+• Comprendre comment votre état d'esprit influence vos décisions.
+• Reconnaître et examiner vos pensées répétitives.
+• Développer un dialogue intérieur plus constructif.
+• Renforcer votre discipline et votre persévérance.
+• Apprendre à mieux comprendre vos peurs et vos émotions.
+• Identifier les blocages intérieurs et les contraintes extérieures.
+• Retrouver un meilleur équilibre entre le corps, les pensées et la vie intérieure.
+• Clarifier vos intentions et agir en accord avec vos valeurs.
+• Découvrir le sens de la purification symbolique et du renouveau personnel.
+
+UN PARCOURS EN DEUX GRANDES PARTIES
+
+PREMIÈRE PARTIE — LA PRÉPARATION MENTALE
+
+Chapitre 1 — Tout commence par un état d'esprit
+
+Comprenez comment votre manière d'interpréter les situations peut influencer vos décisions et vos actions.
+
+Chapitre 2 — Maîtriser ses pensées pour transformer sa vie
+
+Apprenez à distinguer les faits de vos interprétations, à examiner les pensées répétitives et à protéger votre attention.
+
+Chapitre 3 — La discipline, la maîtrise de soi et la persévérance
+
+Découvrez comment transformer vos intentions en habitudes réalistes et continuer à progresser sans rechercher la perfection.
+
+Chapitre 4 — Les peurs, les émotions et les blocages intérieurs
+
+Apprenez à mieux comprendre vos réactions, à examiner vos croyances et à reconnaître les obstacles sur lesquels vous pouvez agir.
+
+DEUXIÈME PARTIE — LA PRÉPARATION SPIRITUELLE
+
+Chapitre 5 — Préparer le corps, l'esprit et l'âme
+
+Explorez l'importance de l'équilibre personnel, du repos, de l'organisation et du sens que vous donnez à votre vie.
+
+Chapitre 6 — La pureté des intentions, le recueillement et la cohérence spirituelle
+
+Examinez les motivations qui orientent vos désirs et apprenez à rapprocher vos décisions de vos valeurs.
+
+Chapitre 7 — La purification et le renouveau personnel
+
+Découvrez une approche de la purification comme démarche de clarification intérieure, de réflexion et de renouvellement personnel.
+
+DES EXERCICES POUR PASSER À L'ACTION
+
+Ce guide vous propose des exercices pratiques et des défis de sept jours pour chacune des grandes étapes de votre préparation.
+
+Vous pourrez notamment :
+• Examiner vos pensées et vos objectifs.
+• Observer vos habitudes et vos réactions.
+• Développer une discipline adaptée à votre quotidien.
+• Clarifier vos intentions.
+• Faire le point sur ce que vous souhaitez laisser, conserver et construire.
+• Définir des actions concrètes pour poursuivre votre évolution.
+
+À QUI S'ADRESSE CE GUIDE ?
+
+À toute personne qui souhaite renforcer sa discipline, mieux comprendre ses émotions, développer sa stabilité intérieure et approfondir sa démarche spirituelle.
+
+Aucune connaissance particulière n'est nécessaire. Le guide peut être utilisé progressivement, à votre rythme et selon vos convictions.
+
+FORMAT ET PRIX
+
+Format : guide numérique PDF.
+Prix : 4 000 FCFA.
+
+Après votre demande de commande, les instructions de paiement vous seront communiquées par e-mail. Le guide sera envoyé à votre adresse e-mail après vérification effective du paiement.
+
+PRÉPAREZ VOTRE ESPRIT. CLARIFIEZ VOS INTENTIONS.
+
+La préparation ne consiste pas à devenir une personne parfaite. Elle consiste à apprendre à mieux se connaître, à renforcer ses habitudes et à choisir des actions plus cohérentes avec ses valeurs.
+
+Votre progression se construit avec conscience, patience et détermination.
+
+De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, cultiver sa conscience et transformer progressivement sa vie intérieure.`,
 
     price: 4000,
     category: "spiritualite",
