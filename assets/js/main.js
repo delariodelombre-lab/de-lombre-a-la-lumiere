@@ -2,64 +2,73 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Menu mobile
-  const toggle = document.querySelector('.menu-toggle');
-  const mobileNav = document.querySelector('.mobile-nav');
+// MENU MOBILE : une seule commande
+const toggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
 
-  if (toggle && mobileNav) {
-    toggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      toggle.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
-    });
-  }
+if (toggle && mobileNav) {
+toggle.addEventListener('click', function (event) {
+event.preventDefault();
 
-  // Active nav link
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const isOpen = mobileNav.classList.contains('is-open');
 
-  document.querySelectorAll('.nav a, .mobile-nav a').forEach(link => {
-    const href = link.getAttribute('href');
+  mobileNav.classList.toggle('is-open', !isOpen);
+  mobileNav.classList.toggle('open', !isOpen);
 
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
+  toggle.textContent = isOpen ? '☰' : '✕';
+  toggle.setAttribute('aria-expanded', String(!isOpen));
+  toggle.setAttribute(
+    'aria-label',
+    isOpen ? 'Ouvrir le menu' : 'Fermer le menu'
+  );
+});
 
-  // Gestion des boutons Ajouter au panier
-  // La délégation permet de détecter aussi les boutons créés dynamiquement.
-  document.addEventListener('click', function (e) {
+}
 
-    const btn = e.target.closest('[data-add-to-cart]');
+// Liens de navigation actifs
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
-    if (!btn) return;
+document.querySelectorAll('.nav a, .mobile-nav a').forEach(link => {
+const href = link.getAttribute('href');
 
-    e.preventDefault();
+if (href === currentPath) {
+  link.classList.add('active');
+}
 
-    const id = btn.getAttribute('data-add-to-cart');
-    const originalText = btn.textContent;
+});
 
-    if (typeof addToCart !== 'function') {
-      alert('Le panier ne fonctionne pas correctement. Réessaie plus tard.');
-      return;
-    }
+// Gestion des boutons Ajouter au panier
+document.addEventListener('click', function (e) {
 
-    if (addToCart(id)) {
-      btn.textContent = '✓ Ajouté';
-      btn.disabled = true;
+const btn = e.target.closest('[data-add-to-cart]');
 
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 2000);
-    }
-  });
+if (!btn) return;
+
+e.preventDefault();
+
+const id = btn.getAttribute('data-add-to-cart');
+const originalText = btn.textContent;
+
+if (typeof addToCart !== 'function') {
+  alert('Le panier ne fonctionne pas correctement. Réessaie plus tard.');
+  return;
+}
+
+if (addToCart(id)) {
+  btn.textContent = '✓ Ajouté';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 2000);
+}
+
+});
 
 });
 
 // Logo SVG réutilisable
 function getLogoSVG(size = 36) {
-  return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/>
-    <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
-    <circle cx="32" cy="36" r="4" fill="#071923"/>
-  </svg>`;
+return "<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/> <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/> <circle cx="32" cy="36" r="4" fill="#071923"/> </svg>";
 }
