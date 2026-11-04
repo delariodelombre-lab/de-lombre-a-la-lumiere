@@ -3,22 +3,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>De L’Ombre à La Lumière — Guides de transformation intérieure</title>  <meta name="description" content="Des guides concrets pour mieux vous connaître, dépasser vos blocages et avancer vers une vie plus alignée et consciente. Développement personnel, spiritualité et confiance en soi.">  <meta property="og:title" content="De L’Ombre à La Lumière">
   <meta property="og:description" content="Se libérer, se recentrer, rayonner. Guides numériques de transformation intérieure.">
-  <meta property="og:type" content="website">  <link rel="stylesheet" href="assets/css/styles.css">  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">  <!-- CORRECTION DU MENU MOBILE -->  <style>
+  <meta property="og:type" content="website">  <link rel="stylesheet" href="assets/css/styles.css">  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">  <style>
+    /* EN-TÊTE */
     .header .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .header .logo {
+      min-width: 0;
+      flex-shrink: 1;
     }
 
     .header .header-actions {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-shrink: 0;
     }
 
+    /* BOUTON MENU */
     .header .menu-toggle {
       display: none;
+      align-items: center;
+      justify-content: center;
       background: transparent;
       color: #E9B949;
       border: 2px solid #E9B949;
@@ -29,10 +42,12 @@
       cursor: pointer;
       min-width: 45px;
       min-height: 42px;
+      flex-shrink: 0;
     }
 
+    /* MENU MOBILE */
     .header .mobile-nav {
-      display: none !important;
+      display: none;
       flex-direction: column;
       width: 100%;
       background: #071923;
@@ -53,22 +68,20 @@
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
-    .header .mobile-nav a:hover {
+    .header .mobile-nav a:hover,
+    .header .mobile-nav a.active {
       color: #E9B949;
     }
 
+    /* AFFICHAGE MOBILE ET TABLETTE */
     @media screen and (max-width: 1000px) {
       .header .header-inner {
         flex-wrap: nowrap;
       }
 
-      .header .logo {
-        min-width: 0;
-        flex: 1;
-      }
-
       .header .logo span {
         font-size: 15px;
+        overflow-wrap: normal;
       }
 
       .header .nav {
@@ -77,19 +90,39 @@
 
       .header .menu-toggle {
         display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
       }
     }
 
+    /* AFFICHAGE ORDINATEUR */
     @media screen and (min-width: 1001px) {
       .header .nav {
         display: flex !important;
       }
 
-      .header .menu-toggle,
+      .header .menu-toggle {
+        display: none !important;
+      }
+
       .header .mobile-nav {
         display: none !important;
+      }
+    }
+
+    /* PETITS TÉLÉPHONES */
+    @media screen and (max-width: 380px) {
+      .header .logo span {
+        font-size: 12px;
+      }
+
+      .header .header-inner {
+        padding-left: 8px;
+        padding-right: 8px;
+        gap: 5px;
+      }
+
+      .header .menu-toggle {
+        min-width: 40px;
+        padding: 4px 8px;
       }
     }
   </style></head><body>  <!-- EN-TÊTE -->  <header class="header"><div class="header-inner">
@@ -100,6 +133,7 @@
       <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
       <circle cx="32" cy="36" r="4" fill="#071923"/>
     </svg>
+
     <span>De L’Ombre à La Lumière</span>
   </a>
 
@@ -125,8 +159,7 @@
       class="menu-toggle"
       aria-label="Ouvrir le menu"
       aria-expanded="false"
-      aria-controls="mobile-navigation"
-      onclick="toggleSiteMenu(event, this)">
+      aria-controls="mobile-navigation">
       ☰
     </button>
 
@@ -134,17 +167,23 @@
 </div>
 
 <!-- MENU TÉLÉPHONE -->
-<nav class="mobile-nav" id="mobile-navigation" aria-label="Navigation mobile">
+<nav
+  class="mobile-nav"
+  id="mobile-navigation"
+  aria-label="Navigation mobile">
+
   <a href="index.html">Accueil</a>
   <a href="boutique.html">Boutique</a>
   <a href="a-propos.html">À propos</a>
   <a href="blog.html">Blog</a>
   <a href="contact.html">Contact</a>
   <a href="panier.html">Panier</a>
+
 </nav>
 
-  </header>  <!-- SECTION PRINCIPALE -->  <section class="hero">
-    <div class="hero-content">  <h1>De L’Ombre à La Lumière</h1>
+  </header>  <!-- SECTION PRINCIPALE -->  <section class="hero"><div class="hero-content">
+
+  <h1>De L’Ombre à La Lumière</h1>
 
   <p class="slogan">Se libérer, se recentrer, rayonner.</p>
 
@@ -159,8 +198,9 @@
 
 </div>
 
-  </section>  <!-- THÉMATIQUES -->  <section class="section themes">
-    <div class="container">  <h2 class="section-title">Des thématiques essentielles</h2>
+  </section>  <!-- THÉMATIQUES -->  <section class="section themes"><div class="container">
+
+  <h2 class="section-title">Des thématiques essentielles</h2>
 
   <p class="section-subtitle">
     Chaque guide a été conçu pour vous accompagner concrètement
@@ -196,8 +236,9 @@
   </div>
 </div>
 
-  </section>  <!-- GUIDES -->  <section class="section">
-    <div class="container">  <h2 class="section-title">Nos guides</h2>
+  </section>  <!-- GUIDES -->  <section class="section"><div class="container">
+
+  <h2 class="section-title">Nos guides</h2>
 
   <p class="section-subtitle">
     Des outils clairs, structurés et directement applicables.
@@ -215,8 +256,9 @@
 
 </div>
 
-  </section>  <!-- COMMENT ÇA MARCHE -->  <section class="section" style="background: #fff;">
-    <div class="container">  <h2 class="section-title">Comment ça se passe</h2>
+  </section>  <!-- COMMENT ÇA MARCHE -->  <section class="section" style="background: #fff;"><div class="container">
+
+  <h2 class="section-title">Comment ça se passe</h2>
 
   <p class="section-subtitle">
     Une commande simple avec confirmation personnelle du paiement.
@@ -253,8 +295,9 @@
   </div>
 </div>
 
-  </section>  <!-- À PROPOS -->  <section class="section about-teaser">
-    <div class="container">  <h2>Notre promesse</h2>
+  </section>  <!-- À PROPOS -->  <section class="section about-teaser"><div class="container">
+
+  <h2>Notre promesse</h2>
 
   <p style="max-width: 650px; margin: 1rem auto 2rem; opacity: 0.9;">
     Parce que chaque personne porte en elle une lumière.
@@ -269,43 +312,53 @@
 
 </div>
 
-  </section>  <!-- FAQ -->  <section class="section">
-    <div class="container" style="max-width: 700px;">  <h2 class="section-title">Questions fréquentes</h2>
+  </section>  <!-- FAQ -->  <section class="section"><div class="container" style="max-width: 700px;">
+
+  <h2 class="section-title">Questions fréquentes</h2>
 
   <div style="margin-top: 2rem;">
 
     <details style="margin-bottom: 1rem; background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: var(--ombre);">
+
       <summary style="font-weight: 600; cursor: pointer;">
         Comment vais-je recevoir mon guide ?
       </summary>
+
       <p style="margin-top: 0.75rem; color: var(--gris-clair);">
         Après confirmation de la réception de votre paiement,
         votre guide numérique au format PDF vous sera envoyé
         à l'adresse e-mail indiquée lors de votre commande.
       </p>
+
     </details>
 
     <details style="margin-bottom: 1rem; background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: var(--ombre);">
+
       <summary style="font-weight: 600; cursor: pointer;">
         Quels moyens de paiement acceptez-vous ?
       </summary>
+
       <p style="margin-top: 0.75rem; color: var(--gris-clair);">
         Nous proposons actuellement le paiement manuel par MTN Mobile Money
         et Moov Money. Les instructions et le numéro de paiement vous seront
         communiqués individuellement après votre demande de commande.
         Aucun numéro personnel n'est affiché publiquement sur le site.
       </p>
+
     </details>
 
     <details style="margin-bottom: 1rem; background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: var(--ombre);">
+
       <summary style="font-weight: 600; cursor: pointer;">
         Puis-je demander un remboursement ?
       </summary>
+
       <p style="margin-top: 0.75rem; color: var(--gris-clair);">
         Les demandes sont examinées conformément à notre politique
         de remboursement et aux droits applicables.
         Consultez la page dédiée pour connaître les modalités.
       </p>
+
     </details>
 
   </div>
@@ -368,35 +421,17 @@
 </div>
 
 <div class="footer-bottom">
+
   <p>© 2026 De L’Ombre à La Lumière — Tous droits réservés.</p>
 
   <p style="margin-top: 0.3rem; font-size: 0.8rem;">
     Commandes traitées manuellement. Le paiement automatique et la livraison
     automatique ne sont pas encore activés.
   </p>
+
 </div>
 
-  </footer>  <!-- SCRIPTS DU SITE -->  <script src="assets/js/products.js"></script>  <script src="assets/js/cart.js"></script>  <script src="assets/js/main.js"></script>  <!-- FONCTIONNEMENT DU MENU MOBILE -->  <script>
-    function toggleSiteMenu(event, button) {
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-
-      const menu = document.getElementById('mobile-navigation');
-
-      if (!menu) return;
-
-      const isOpen = menu.classList.toggle('is-open');
-
-      button.setAttribute('aria-expanded', String(isOpen));
-      button.setAttribute(
-        'aria-label',
-        isOpen ? 'Fermer le menu' : 'Ouvrir le menu'
-      );
-
-      button.textContent = isOpen ? '✕' : '☰';
-    }
-  </script>  <!-- AFFICHAGE DES GUIDES MIS EN AVANT -->  <script>
+  </footer>  <!-- SCRIPTS DU SITE -->  <script src="assets/js/products.js"></script>  <script src="assets/js/cart.js"></script>  <script src="assets/js/main.js"></script>  <!-- AFFICHAGE DES GUIDES MIS EN AVANT -->  <script>
     document.addEventListener('DOMContentLoaded', function() {
 
       const container = document.getElementById('featured-products');
@@ -467,4 +502,4 @@
 
     });
   </script></body>
-    </html>
+</html>
