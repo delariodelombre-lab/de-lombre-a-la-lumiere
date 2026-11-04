@@ -1,22 +1,21 @@
-<!DOCTYPE html><html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panier — De L’Ombre à La Lumière</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
-</head>
-<body>
-  <header class="header">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/>
-          <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
-          <circle cx="32" cy="36" r="4" fill="#071923"/>
-        </svg>
-        <span>De L’Ombre à La Lumière</span>
-      </a>  <nav class="nav">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Panier — De L’Ombre à La Lumière</title>  <meta name="description" content="Consultez votre panier et préparez votre commande de guides numériques.">  <link rel="stylesheet" href="assets/css/styles.css">  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+</head><body>  <!-- EN-TÊTE -->  <header class="header"><div class="header-inner">
+
+  <a href="index.html" class="logo">
+
+    <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="30" stroke="#E9B949" stroke-width="2"/>
+      <path d="M32 14C32 14 22 28 22 36C22 41.5228 26.4772 46 32 46C37.5228 46 42 41.5228 42 36C42 28 32 14 32 14Z" fill="#E9B949"/>
+      <circle cx="32" cy="36" r="4" fill="#071923"/>
+    </svg>
+
+    <span>De L’Ombre à La Lumière</span>
+
+  </a>
+
+  <nav class="nav">
     <a href="index.html">Accueil</a>
     <a href="boutique.html">Boutique</a>
     <a href="a-propos.html">À propos</a>
@@ -24,11 +23,18 @@
   </nav>
 
   <div class="header-actions">
+
     <a href="panier.html" class="cart-btn">
-      🛒 <span class="cart-count" style="display:none">0</span>
+      🛒
+      <span class="cart-count" style="display:none">0</span>
     </a>
-    <button class="menu-toggle">☰</button>
+
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu">
+      ☰
+    </button>
+
   </div>
+
 </div>
 
 <nav class="mobile-nav">
@@ -39,20 +45,31 @@
   <a href="panier.html">Panier</a>
 </nav>
 
-  </header>  <section class="section">
-    <div class="container">
-      <h1 class="section-title">Votre panier</h1>
-      <div class="cart-layout" id="cart-content">
-        <!-- Contenu généré par JavaScript -->
-      </div>
-    </div>
-  </section>  <footer class="footer">
-    <div class="footer-bottom">
-      <p>© 2026 De L’Ombre à La Lumière</p>
-    </div>
-  </footer>  <script src="assets/js/products.js"></script>  <script src="assets/js/cart.js"></script>  <script src="assets/js/main.js"></script>  <script>
+  </header>  <!-- CONTENU DU PANIER -->  <section class="section"><div class="container">
+
+  <h1 class="section-title">Votre panier</h1>
+
+  <p class="section-subtitle">
+    Retrouvez les guides que vous avez sélectionnés.
+  </p>
+
+  <div class="cart-layout" id="cart-content">
+    <!-- Contenu généré automatiquement -->
+  </div>
+
+</div>
+
+  </section>  <!-- PIED DE PAGE -->  <footer class="footer"><div class="footer-bottom">
+  <p>© 2026 De L’Ombre à La Lumière</p>
+</div>
+
+  </footer>  <!-- SCRIPTS -->  <script src="assets/js/products.js"></script>  <script src="assets/js/cart.js"></script>  <script src="assets/js/main.js"></script>  <script>
+
+    // Protection du contenu affiché
     function escapeHTML(value) {
+
       return String(value ?? '').replace(/[&<>"']/g, function(character) {
+
         return {
           '&': '&amp;',
           '<': '&lt;',
@@ -60,77 +77,129 @@
           '"': '&quot;',
           "'": '&#039;'
         }[character];
+
       });
+
     }
 
+    // Affichage du panier
     function renderCart() {
+
       const cart = getCart();
+
       const container = document.getElementById('cart-content');
 
       if (!cart || cart.length === 0) {
+
         container.innerHTML = `
+
           <div class="empty-state" style="grid-column:1/-1">
-            <p style="font-size:3rem; margin-bottom:1rem;">🛒</p>
+
+            <p style="font-size:3rem; margin-bottom:1rem;">
+              🛒
+            </p>
+
             <h2>Votre panier est vide</h2>
-            <p>Découvrez nos guides et commencez votre transformation.</p>
+
+            <p>
+              Découvrez nos guides et commencez votre transformation.
+            </p>
+
             <a href="boutique.html" class="btn btn-primary mt-2">
               Voir la boutique
             </a>
-          </div>`;
+
+          </div>
+
+        `;
+
         return;
+
       }
 
+      // Création des articles
       const itemsHtml = cart.map(item => `
+
         <div class="cart-item">
+
           <div class="cart-item-cover">
             ${escapeHTML(item.emoji || '📘')}
           </div>
 
-          <div style="flex:1">
+          <div style="flex:1; min-width:0;">
+
             <h3 style="font-size:1.05rem; margin-bottom:0.3rem;">
               ${escapeHTML(item.title)}
             </h3>
+
             <p style="color:var(--or); font-weight:600;">
               ${formatPrice(item.price)}
             </p>
+
           </div>
 
           <button
             type="button"
-            onclick="removeCartItem('${escapeHTML(item.id)}')"
+            data-remove-cart="${escapeHTML(item.id)}"
             style="background:none; border:none; color:#c00; cursor:pointer; font-size:1.2rem;"
-            aria-label="Supprimer ${escapeHTML(item.title)} du panier">
+            aria-label="Supprimer cet article">
+
             ✕
+
           </button>
+
         </div>
+
       `).join('');
 
+      // Calcul du total
       const total = getCartTotal();
 
+      // Affichage général
       container.innerHTML = `
+
         <div>
           ${itemsHtml}
         </div>
 
         <div class="cart-summary">
-          <h3 style="margin-bottom:1rem;">Récapitulatif</h3>
+
+          <h3 style="margin-bottom:1rem;">
+            Récapitulatif
+          </h3>
 
           <div class="flex justify-between mb-2">
+
             <span>Sous-total</span>
-            <strong>${formatPrice(total)}</strong>
+
+            <strong>
+              ${formatPrice(total)}
+            </strong>
+
           </div>
 
-          <div class="flex justify-between mb-2"
+          <div
+            class="flex justify-between mb-2"
             style="font-size:0.9rem; color:var(--gris-clair);">
+
             <span>Livraison</span>
-            <span>Guide numérique par e-mail après paiement confirmé</span>
+
+            <span>
+              Guide numérique par e-mail après paiement confirmé
+            </span>
+
           </div>
 
           <hr style="margin:1rem 0; border:none; border-top:1px solid #eee;">
 
           <div class="flex justify-between" style="font-size:1.2rem;">
+
             <strong>Total</strong>
-            <strong style="color:var(--or)">${formatPrice(total)}</strong>
+
+            <strong style="color:var(--or);">
+              ${formatPrice(total)}
+            </strong>
+
           </div>
 
           <a href="checkout.html" class="btn btn-primary w-full mt-3">
@@ -142,20 +211,50 @@
           </a>
 
           <div class="alert alert-info mt-2" style="font-size:0.85rem;">
-            <strong>Paiement manuel</strong><br>
+
+            <strong>Paiement manuel</strong>
+
+            <br><br>
+
             Après votre demande de commande, nous vous communiquerons
-            les instructions pour payer par MTN Mobile Money ou Moov Money.
-            Votre guide sera envoyé par e-mail après vérification du paiement.
+            individuellement les instructions pour payer par
+            MTN Mobile Money ou Moov Money.
+
+            <br><br>
+
+            Votre guide numérique sera envoyé par e-mail après
+            vérification effective du paiement.
+
           </div>
+
         </div>
+
       `;
+
     }
 
-    function removeCartItem(itemId) {
-      removeFromCart(itemId);
+    // Gestion sécurisée de la suppression
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const container = document.getElementById('cart-content');
+
       renderCart();
-    }
 
-    document.addEventListener('DOMContentLoaded', renderCart);
+      container.addEventListener('click', function(event) {
+
+        const button = event.target.closest('[data-remove-cart]');
+
+        if (!button) return;
+
+        const itemId = button.dataset.removeCart;
+
+        removeFromCart(itemId);
+
+        renderCart();
+
+      });
+
+    });
+
   </script></body>
 </html>
