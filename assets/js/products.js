@@ -86,6 +86,7 @@ De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, 
     price: 4000,
     category: "transformation",
     coverEmoji: "🌅",
+    image: "assets/images/couverture-guide-1.jpg",
     featured: true,
     active: true
   },
@@ -188,6 +189,7 @@ De L’Ombre à La Lumière — Une collection pour apprendre à se connaître, 
     price: 4000,
     category: "spiritualite",
     coverEmoji: "✨",
+    image: "assets/images/couverture-guide-2-1.jpg",
     featured: true,
     active: true
   }
